@@ -1,0 +1,33 @@
+# Program to calculate monthly savings based on income and expenses
+
+# Display welcome message
+print("Welcome to the Monthly Budget Calculator!")
+
+# Get total income from the user
+income = float(input("Enter your total monthly income: "))
+
+# Initialize expense list
+expenses = []
+print("Enter your expenses as 'Category Amount'. Type 'done' when finished.")
+
+# Collect expenses from user
+while True:
+    entry = input("> ")
+    if entry.lower() == 'done':
+        break
+    category, amount = entry.split()
+    expenses.append((category, float(amount)))
+
+# Calculate total expenses
+total_expenses = sum(amount for _, amount in expenses)
+
+# Calculate savings
+savings = income - total_expenses
+
+# Display results
+if savings >= 0:
+    print(f"Your total savings for the month: ${savings:.2f}")
+else:
+    print(f"You have a deficit of ${-savings:.2f}. Consider reducing expenses.")
+
+print("Thank you for using the Budget Calculator!")
